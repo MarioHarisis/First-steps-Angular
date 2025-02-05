@@ -1,0 +1,36 @@
+<div class="container col-6 mt-3">
+  <form (ngSubmit)="onSubmit()">
+    <!-- método definido en form.component.ts -->
+    <div>
+      <input
+        class="form-control"
+        type="text"
+        name="name"
+        placeholder="Name"
+        [(ngModel)]="product.name"
+      />
+    </div>
+    <div>
+      <input
+        class="form-control"
+        type="text"
+        name="description"
+        placeholder="Description"
+        [(ngModel)]="product.description"
+      />
+    </div>
+    <div>
+      <input
+        class="form-control"
+        type="number"
+        name="price"
+        placeholder="Price"
+        [(ngModel)]="product.price"
+        min="0"
+      />
+    </div>
+    <div>
+      <button class="btn btn-primary mt-2">Crear producto</button>
+    </div>
+  </form>
+</div>

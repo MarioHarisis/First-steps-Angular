@@ -1,0 +1,35 @@
+<!-- 
+ Indica que el componente product-form (hijo) está emitiendo un evento llamado newProductEvent, 
+ y el componente padre está escuchándolo con la función addProduct($event)
+
+ "addProduct($event)" significa que, cuando newProductEvent sea emitido, se ejecutará 
+ la función addProduct() en el componente padre, pasando $event como argumento-->
+<product-form (newProductEvent)="addProduct($event)"></product-form>
+
+@if (products.length > 0) {
+<div class="container col-8 mt-5">
+  <h2>{{ title }}</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>description</th>
+        <th>price</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products; track $index) {
+      <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}€</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+} @else {
+<div>lo sentimos no hay registros en el sistema</div>
+}
