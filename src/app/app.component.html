@@ -5,34 +5,34 @@ el boton escucha la accion click y ejecuta una función setEnabled,
  dependiendo de lo que sea enabled (?) mostrará ocultar o mostrar 
  como texto del botón
  -->
-<button class="btn btn-primary col-3 m-3" type="button" (click)="setEnabled()">
+<!-- <button class="btn btn-primary col-3 m-3" type="button" (click)="setEnabled()">
   {{ enabled ? "Ocultar" : "Mostrar" }}
-</button>
+</button> -->
 
 <!-- Condicional if else -->
 
-<div *ngIf="enabled; else notEnabled">
-  <!-- enabled lo encontramos en ./app.component.ts -->
+<!-- <div *ngIf="enabled; else notEnabled">
+  enabled lo encontramos en ./app.component.ts 
   <h2>{{ title }}</h2>
-</div>
+</div> -->
 
-<ng-template #notEnabled>
-  <!-- lo que ocurre cuando entre por el else -->
+<!-- <ng-template #notEnabled>
+  lo que ocurre cuando entre por el else 
   <h2>Lo sentimos no está disponible</h2>
 </ng-template>
 
 <div class="container col-8">
   <ul class="list-group" *ngIf="enabled">
-    <!-- se mostrará la lista solo cuando enabled = true -->
+  se mostrará la lista solo cuando enabled = true
 
-    <!-- ver cada curso de la lista cursos creada en ./app.component.ts -->
+  ver cada curso de la lista cursos creada en ./app.component.ts
     <li class="list-group-item" *ngFor="let course of courses">{{ course }}</li>
   </ul>
-</div>
+</div> -->
 
 <!-- OTRA FROMA MAS MODERNA DE HACERLO -->
 
-@if (enabled) {
+<!-- @if (enabled) {
 <h2>{{ title }} moderno</h2>
 
 <div class="container col-8">
@@ -45,6 +45,6 @@ el boton escucha la accion click y ejecuta una función setEnabled,
 
 } @else {
 <h2>Lo sentimos no está disponible</h2>
-}
+} -->
 
 <app-product></app-product>

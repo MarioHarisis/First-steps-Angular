@@ -15,6 +15,8 @@ export class ProductComponent implements OnInit{
   title: string = 'Lista de productos';
   products: Product[] = [];
 
+  selectedProduct: Product = new Product();
+
   /* es lo mismo que definir el atributo fuera de constructor
    y luego inyectarlo 
    
@@ -39,13 +41,41 @@ export class ProductComponent implements OnInit{
     this.service.findAll().subscribe(products => this.products = products);
   }
 
-  addProduct(product: Product) {
-    product.id = this.products.length + 1;
-    this.products.push(product);
-    /* 
-    Otra opcion:
-    this.products = [... this.products, {... product}] 
-    modificar la lista existente añadiendo los productos que ya existían más el que recibe el método
-    */
+  addProduct(product: Product): void {
+    if(product.id > 0){ //si el producto existe
+      /* 
+      map() es un método de los arrays en JavaScript que recorre y crea un nuevo array transformando cada elemento.
+      Se reemplaza this.products con una nueva lista en la que:
+      */
+      this.products = this.products.map( prod => {
+        if (prod.id == product.id) { // Si el producto ya existe, se reemplaza con la versión actualizada.
+          return { ...product }; // return { ...product }; Crea una copia del objeto product en lugar de modificarlo directamente
+        }
+        return prod; // Si el producto no coincide, se mantiene sin cambios
+      })
+    }else {
+
+      this.products = [... this.products, { ...product, id: new Date().getTime() }];
+      /* 
+      Otra opcion:
+      this.products = [... this.products, {... product}] 
+      modificar la lista existente añadiendo los productos que ya existían más el que recibe el método
+      */
+    }
+    this.selectedProduct = new Product();
+
   }
+
+  // eliminar producto por id
+  onRemoveProduct(id:number): void {
+    // crear una nueva lista filtrando por id y excluyendo el que es igual
+    this.products = this.products.filter(product => product.id != id);
+  }
+
+  // editar producto seleccionado
+  onUpdateProduct(productRow: Product): void {
+    this.selectedProduct = productRow;
+    console.log('Selected Product:', this.selectedProduct); // Verifica que el producto está correcto
+  }
+
 }

@@ -1,9 +1,10 @@
+<h2 class="mt-3">Formulario de productos</h2>
 <div class="container col-6 mt-3">
   <form (ngSubmit)="onSubmit()">
     <!-- método definido en form.component.ts -->
     <div>
       <input
-        class="form-control"
+        class="form-control my-2"
         type="text"
         name="name"
         placeholder="Name"
@@ -12,7 +13,7 @@
     </div>
     <div>
       <input
-        class="form-control"
+        class="form-control my-2"
         type="text"
         name="description"
         placeholder="Description"
@@ -21,7 +22,7 @@
     </div>
     <div>
       <input
-        class="form-control"
+        class="form-control my-2"
         type="number"
         name="price"
         placeholder="Price"
@@ -30,7 +31,9 @@
       />
     </div>
     <div>
-      <button class="btn btn-primary mt-2">Crear producto</button>
+      <button class="btn btn-primary mt-2">
+        {{ product.id > 0 ? "Update" : "Create" }}
+      </button>
     </div>
   </form>
 </div>

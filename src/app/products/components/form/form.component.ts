@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/product';
 import { FormsModule } from '@angular/forms';
 
@@ -10,10 +10,17 @@ import { FormsModule } from '@angular/forms';
 })
 export class FormComponent {
 
-  product: Product = {
+  /* 
+  @Input() permite que un hijo reciba datos de su padre.
+  Se usa @Input() product: Product para recibir un objeto de tipo Product.
+  El padre envía el producto al hijo con [product]="selectedProduct" desde el product-form
+  Si no se envía nada, el hijo (este compnente) usa el valor por defecto 
+  { id: 0, name: "", description: "", price: 0 }. 
+  */
+  @Input() product: Product = {
     id: 0,
-    name: "",
-    description: "",
+    name: '',
+    description: '',
     price: 0,
   }
 
