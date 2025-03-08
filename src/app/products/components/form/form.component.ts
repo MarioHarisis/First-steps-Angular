@@ -1,15 +1,15 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/product';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'product-form',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })
 export class FormComponent {
-
   /* 
   @Input() permite que un hijo reciba datos de su padre.
   Se usa @Input() product: Product para recibir un objeto de tipo Product.
@@ -42,4 +42,13 @@ export class FormComponent {
     this.newProductEvent.emit(this.product);
     console.log(this.product);
   }
+
+  cleanProduct() {
+    this.product = {
+      id: 0,
+      name: '',
+      description: '',
+      price: 0,
+    }
+    }
 }

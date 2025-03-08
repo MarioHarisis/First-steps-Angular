@@ -63,7 +63,6 @@ export class ProductComponent implements OnInit{
       */
     }
     this.selectedProduct = new Product();
-
   }
 
   // eliminar producto por id
@@ -74,7 +73,7 @@ export class ProductComponent implements OnInit{
 
   // editar producto seleccionado
   onUpdateProduct(productRow: Product): void {
-    this.selectedProduct = productRow;
+    this.selectedProduct = {... productRow}; // clonar una instancia de producto(spread operator)
     console.log('Selected Product:', this.selectedProduct); // Verifica que el producto está correcto
   }
 
